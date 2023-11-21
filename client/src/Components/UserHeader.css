@@ -1,0 +1,24 @@
+:root {
+  --main-color: rgb(30, 210, 180);
+}
+
+.user-button {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.home {
+  background-color: var(--main-color);
+  color: white;
+  width: 30%;
+  height: 40px;
+  padding: 1%;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 10px;
+}
+.post-button {
+  background-color: var(--main-color);
+  color: white;
+  text-align: center;
+}
