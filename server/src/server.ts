@@ -1,13 +1,14 @@
 import express from 'express';
 import cors from 'cors';
-const config = require('../db/knexfile');
-const knex = require('knex')(config);
+// const config = require('../db/knexfile');
+import knexConfig from '../db/knexfile';
+const knex = require('knex')(knexConfig);
 
 const setUpServer = () => {
   const app = express();
   app.use(express.json());
 
-  const PORT = 8000;
+  // const PORT = 8000;
 
   app.use(
     cors({
@@ -39,18 +40,22 @@ const setUpServer = () => {
     const sendList = userList.filter(
       (list: List) => list.post_id === +req.params.id
     );
-    res.status(200).send(sendList);
+    if (sendList[0]) {
+      res.status(200).send(sendList);
+    } else {
+      res.status(404).send(sendList);
+    }
   });
 
   app.post('/data', async (req, res) => {
     const postData = await knex('post').insert(req.body);
-    res.status(200).send('投稿しました');
+    res.status(201).send(req.body);
   });
 
-  app.listen(PORT, () => {
-    console.log('Root server:', `http://localhost:${PORT}`);
-  });
+  // app.listen(PORT, () => {
+  //   console.log('Root server:', `http://localhost:${PORT}`);
+  // });
   return app;
 };
 
-module.exports = { setUpServer };
+export default setUpServer;
