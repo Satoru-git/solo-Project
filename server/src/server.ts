@@ -1,18 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-// const config = require('../db/knexfile');
-// import knexConfig from '../db/knexfile';
-// const knex = require('knex')(knexConfig);
-// console.log(knex);
 import knexEnv from '../db';
 
 const setUpServer = () => {
   const app = express();
   app.use(express.json());
-
-  // const PORT = 8000;
-
   app.use('/', express.static('public'));
+
   app.use(
     cors({
       origin: 'http://localhost:5173',
@@ -54,10 +48,6 @@ const setUpServer = () => {
     const postData = await knexEnv('post').insert(req.body);
     res.status(201).send(req.body);
   });
-
-  // app.listen(PORT, () => {
-  //   console.log('Root server:', `http://localhost:${PORT}`);
-  // });
   return app;
 };
 
