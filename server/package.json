@@ -6,11 +6,11 @@
   "scripts": {
     "test": "mocha -r ts-node/register 'test/**/*.ts'",
     "start": "node ./dist/src/index.js",
-    "migrate": "knex migrate:latest --knexfile ./db/knexfile.ts ",
-    "makeMigration": "knex migrate:make --knexfile ./db/knexfile.ts ",
-    "seed": "knex seed:run --knexfile ./db/knexfile.ts ",
-    "makeSeed": "knex seed:make --knexfile ./db/knexfile.ts ",
-    "rollback": "knex migrate:rollback --knexfile ./db/knexfile.ts ",
+    "migrate": "knex migrate:latest --knexfile ./dist/db/knexfile.js",
+    "makeMigration": "knex migrate:make --knexfile ./dist/db/knexfile.js",
+    "seed": "knex seed:run --knexfile ./dist/db/knexfile.js ",
+    "makeSeed": "knex seed:make --knexfile ./dist/db/knexfile.js",
+    "rollback": "knex migrate:rollback --knexfile ./dist/db/knexfile.js",
     "build": "npm install & npm run migrate & npm run seed"
   },
   "keywords": [],
