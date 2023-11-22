@@ -18,6 +18,7 @@ const setUpServer = () => {
     })
   );
 
+  app.use('/', express.static(__dirname + '/public'));
   app.get('/data', async (req, res) => {
     const userList = await knexEnv('user_info')
       .select()
