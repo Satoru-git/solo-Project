@@ -6,17 +6,18 @@
   "scripts": {
     "test": "mocha -r ts-node/register 'test/**/*.ts'",
     "start": "node ./dist/src/index.js",
-    "migrate": "knex migrate:latest --knexfile ./dist/db/knexfile.js",
-    "makeMigration": "knex migrate:make --knexfile ./dist/db/knexfile.js",
-    "seed": "knex seed:run --knexfile ./dist/db/knexfile.js ",
-    "makeSeed": "knex seed:make --knexfile ./dist/db/knexfile.js",
-    "rollback": "knex migrate:rollback --knexfile ./dist/db/knexfile.js",
+    "migrate": "npx knex migrate:latest --knexfile ./dist/db/knexfile.js",
+    "makeMigration": "npx knex migrate:make --knexfile ./dist/db/knexfile.js",
+    "seed": "npx knex seed:run --knexfile ./dist/db/knexfile.js ",
+    "makeSeed": "npx knex seed:make --knexfile ./dist/db/knexfile.js ",
+    "rollback": "npx knex migrate:rollback --knexfile ./dist/db/knexfile.js",
     "build": "npm install & npm run migrate & npm run seed"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/chai-http": "^4.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
