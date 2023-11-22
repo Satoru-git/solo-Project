@@ -12,13 +12,13 @@ const setUpServer = () => {
 
   // const PORT = 8000;
 
+  app.use('/', express.static('public'));
   app.use(
     cors({
       origin: 'http://localhost:5173',
     })
   );
 
-  app.use('/', express.static(__dirname + '/public'));
   app.get('/data', async (req, res) => {
     const userList = await knexEnv('user_info')
       .select()
