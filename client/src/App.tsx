@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   const [dbData, setDbData] = useState<inputDbData[]>([]);
   const [userInfo, setUserInfo] = useState<inputDbData[]>([]);
-  console.log(userInfo);
+
   useEffect(() => {
     DataApi.getAll().then((res: AxiosResponse<inputDbData[]>) => {
       setDbData(res.data);
