@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register 'test/**/*.ts'",
-    "start": "node ./dist/src/index.js",
+    "start": "node server/dist/src/index.js",
     "migrate": "knex migrate:latest --knexfile ./db/knexfile.js ",
     "makeMigration": "knex migrate:make --knexfile ./db/knexfile.js ",
     "seed": "knex seed:run --knexfile ./db/knexfile.js ",
