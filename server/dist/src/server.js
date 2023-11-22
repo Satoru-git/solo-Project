@@ -5,15 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-// const config = require('../db/knexfile');
-// import knexConfig from '../db/knexfile';
-// const knex = require('knex')(knexConfig);
-// console.log(knex);
 const db_1 = __importDefault(require("../db"));
 const setUpServer = () => {
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
-    // const PORT = 8000;
     app.use('/', express_1.default.static('public'));
     app.use((0, cors_1.default)({
         origin: 'http://localhost:5173',
@@ -40,9 +35,6 @@ const setUpServer = () => {
         const postData = await (0, db_1.default)('post').insert(req.body);
         res.status(201).send(req.body);
     });
-    // app.listen(PORT, () => {
-    //   console.log('Root server:', `http://localhost:${PORT}`);
-    // });
     return app;
 };
 exports.default = setUpServer;
