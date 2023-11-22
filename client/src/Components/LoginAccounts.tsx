@@ -1,6 +1,7 @@
 import inputDbData from '../global';
 import './LoginAccounts.css';
 import { Link } from 'react-router-dom';
+import imgUrl from '../../public/img/user.png';
 
 interface Props {
   dbData: inputDbData[];
@@ -19,7 +20,7 @@ const LoginAccounts: React.FC<Props> = ({ dbData, setUserInfo }) => {
         {userIds.map((id, index) => (
           <Link to={'/user'} key={index}>
             <div className="account" onClick={() => onClickHandler(index)}>
-              <img src="../../public/img/user.png" alt="userアイコン" />
+              <img src={imgUrl} alt="userアイコン" />
               <p>{id}</p>
             </div>
           </Link>

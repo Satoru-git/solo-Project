@@ -1,8 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 // const config = require('../db/knexfile');
-import knexConfig from '../db/knexfile';
-const knex = require('knex')(knexConfig);
+// import knexConfig from '../db/knexfile';
+// const knex = require('knex')(knexConfig);
+// console.log(knex);
+import knexEnv from '../db';
 
 const setUpServer = () => {
   const app = express();
@@ -17,7 +19,7 @@ const setUpServer = () => {
   );
 
   app.get('/data', async (req, res) => {
-    const userList = await knex('user_info')
+    const userList = await knexEnv('user_info')
       .select()
       .leftJoin('post', 'id', 'post.post_id');
     res.status(200).send(userList);
@@ -34,7 +36,7 @@ const setUpServer = () => {
     post_date: Date;
   }
   app.get('/data/:id', async (req, res) => {
-    const userList = await knex('user_info')
+    const userList = await knexEnv('user_info')
       .select()
       .leftJoin('post', 'id', 'post.post_id');
     const sendList = userList.filter(
@@ -48,7 +50,7 @@ const setUpServer = () => {
   });
 
   app.post('/data', async (req, res) => {
-    const postData = await knex('post').insert(req.body);
+    const postData = await knexEnv('post').insert(req.body);
     res.status(201).send(req.body);
   });
 

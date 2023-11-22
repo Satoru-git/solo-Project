@@ -6,8 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 // const config = require('../db/knexfile');
-const knexfile_1 = __importDefault(require("../db/knexfile"));
-const knex = require('knex')(knexfile_1.default);
+// import knexConfig from '../db/knexfile';
+// const knex = require('knex')(knexConfig);
+// console.log(knex);
+const db_1 = __importDefault(require("../db"));
 const setUpServer = () => {
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
@@ -16,13 +18,13 @@ const setUpServer = () => {
         origin: 'http://localhost:5173',
     }));
     app.get('/data', async (req, res) => {
-        const userList = await knex('user_info')
+        const userList = await (0, db_1.default)('user_info')
             .select()
             .leftJoin('post', 'id', 'post.post_id');
         res.status(200).send(userList);
     });
     app.get('/data/:id', async (req, res) => {
-        const userList = await knex('user_info')
+        const userList = await (0, db_1.default)('user_info')
             .select()
             .leftJoin('post', 'id', 'post.post_id');
         const sendList = userList.filter((list) => list.post_id === +req.params.id);
@@ -34,7 +36,7 @@ const setUpServer = () => {
         }
     });
     app.post('/data', async (req, res) => {
-        const postData = await knex('post').insert(req.body);
+        const postData = await (0, db_1.default)('post').insert(req.body);
         res.status(201).send(req.body);
     });
     // app.listen(PORT, () => {

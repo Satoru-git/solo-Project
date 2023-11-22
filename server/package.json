@@ -10,7 +10,8 @@
     "makeMigration": "knex migrate:make --knexfile ./db/knexfile.js ",
     "seed": "knex seed:run --knexfile ./db/knexfile.js ",
     "makeSeed": "knex seed:make --knexfile ./db/knexfile.js ",
-    "rollback": "knex migrate:rollback --knexfile ./db/knexfile.js "
+    "rollback": "knex migrate:rollback --knexfile ./db/knexfile.js ",
+    "build": "npm install & npm run migrate & npm run seed"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "knex": "^3.0.1",
     "nodemon": "^3.0.1",
     "pg": "^8.11.3",
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
@@ -33,7 +35,6 @@
     "@types/node": "^20.9.3",
     "chai": "^4.3.10",
     "chai-http": "^4.4.0",
-    "mocha": "^10.2.0",
-    "ts-node": "^10.9.1"
+    "mocha": "^10.2.0"
   }
 }
